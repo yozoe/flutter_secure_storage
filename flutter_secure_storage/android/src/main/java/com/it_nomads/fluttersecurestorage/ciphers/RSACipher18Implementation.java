@@ -170,6 +170,9 @@ class RSACipher18Implementation implements KeyCipher {
                 .setCertificateSerialNumber(BigInteger.valueOf(1))
                 .setCertificateNotBefore(start.getTime())
                 .setCertificateNotAfter(end.getTime());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            builder.setIsStrongBoxBacked(true);
+        }
         return builder.build();
     }
 }
